@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: oklch(70.4% 0.14 182.503);
+  --color-secondary: oklch(55.4% 0.046 257.417);
+  --color-dark: oklch(20.8% 0.042 265.755);
+}
+
+
+@layer components {
+  .place {
+    @apply w-[90%] max-w-7xl m-auto
+  }
+  .nav {
+    @apply bg-white/70 backdrop-blur-md sticky top-0 z-10 flex rounded-b-2xl shadow-lg py-5
+  }
+}
+
+@theme {
+  --font-robotoSlab:  'Roboto Slab', 'serif';
+}
