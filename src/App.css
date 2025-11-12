@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: oklch(70.4% 0.14 182.503);
+  --color-primary: oklch(51.1% 0.262 276.966);
   --color-secondary: oklch(55.4% 0.046 257.417);
   --color-dark: oklch(20.8% 0.042 265.755);
 }
@@ -12,7 +12,7 @@
     @apply w-[90%] max-w-7xl m-auto
   }
   .nav {
-    @apply bg-white/70 backdrop-blur-md sticky top-0 z-10 flex rounded-b-2xl shadow-lg py-5
+    @apply bg-white/70 backdrop-blur-md fixed right-0 left-0 top-0 z-20 flex rounded-b-2xl py-5
   }
 }
 
