@@ -27,14 +27,10 @@ function Navbar() {
 
     useEffect(() => {
         function handleScroll() {
-            if (window.scrollY > 0) {
-                setIsScrolled(true)
-            } else {
-                setIsScrolled(false)
-            }
+            setIsScrolled(window.scrollY > 0)
         }
         window.addEventListener('scroll', handleScroll)
-        return () => window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     useEffect(() => {
@@ -57,11 +53,11 @@ function Navbar() {
             <header className="place flex justify-between">
                 <h1 className="text-xl leading-9 font-medium">Brrads</h1>
                 <div ref={menuRef} className="flex">
-                    <div onClick={() => setIsOpen(!isOpen)} className="md:hidden hover:cursor-pointer" >
+                    <button onClick={() => setIsOpen(v => !v)} aria-expanded={isOpen} aria-label={isOpen ? 'Tutup menu' : 'Buka menu'} className="md:hidden hover:cursor-pointer" >
                         <span className={`${isOpen ? 'rotate-43 origin-top-left' : ''} transition-all duration-400 ease-in-out w-[30px] h-[2px] my-2 block bg-dark`}></span>
                         <span className={`${isOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-400 ease-in-out w-[20px] h-[2px] my-2 block bg-dark`}></span>
                         <span className={`${isOpen ? '-rotate-43 origin-bottom-left w-[30px]' : 'w-[10px]'} transition-all duration-400 ease-in-out  h-[2px] my-2 block bg-dark`}></span>
-                    </div>
+                    </button>
                     <ul className={`flex tracking-widest text-[15px] gap-4 md:gap-5 items-center flex-col md:flex-row md:opacity-100 absolute md:pointer-events-auto md:static top-17 p-3 md:p-0 right-10 bg-white shadow-lg md:shadow-none rounded-lg md:bg-transparent w-50 md:w-auto md:h-auto ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0 ' : 'opacity-0 pointer-events-none -translate-y-7'} md:translate-0 transition-all duration-300 ease-in-out `}>
                         <li><a onClick={() => setIsOpen(false)} className="text-primary md:relative md:after:content-[''] md:after:absolute md:after:left-1/2 md:after:-bottom-1 md:after:w-0 md:after:h-[1px] md:after:bg-primary md:after:transition-all md:after:duration-700 md:hover:after:left-0 md:hover:after:w-full px-[65px] md:px-0 py-[10px] md:py-0 hover:text-primary transition-all duration-300 " href="#">Beranda</a></li>
                         <li><a onClick={() => setIsOpen(false)} className="md:relative md:after:content-[''] md:after:absolute md:after:left-1/2 md:after:-bottom-1 md:after:w-0 md:after:h-[1px] md:after:bg-primary md:after:transition-all md:after:duration-700 md:hover:after:left-0 md:hover:after:w-full px-[30px] md:px-0 py-[10px] md:py-0 hover:text-primary transition-all duration-300 " href="#about">Tentang Saya</a></li>
